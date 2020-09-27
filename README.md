@@ -8,6 +8,7 @@ Keysmith makes no attempt to do anything with the values it generates. I do not 
 ## Installing
 
 $ pip install -r requirements.txt
+
 $ python app.py
 
 ### Features
