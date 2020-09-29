@@ -4,7 +4,7 @@ import sys
 from itertools import chain
 from inputbreakdown import *
 
-# input validator
+# input validator function
 def text_alert(text):
 	if text.isalpha():
 		pass
@@ -22,7 +22,7 @@ if startup == 'yes':
 else:
 	sys.exit()
 
-# generates possible representations of inputs and stores them in these variables
+# generate possible representations of inputs and stores them in these variables
 chrs_f_name = possibles_f_name(first_name)
 chrs_l_name = possibles_l_name(last_name)
 numbers = ['1','2','3','4','5','6','7','8','9','0']
@@ -43,7 +43,7 @@ print(chrs)
 file_name = input('Insert a name for your wordlist file: ')+'.txt'
 output = open(file_name, 'w')
 
-# creates all possible orderings, by iterating every representation through the rest of the list, once    
+# fill text file with results, by iterating every representation through the rest of the list, once per representation, and saving   
 for i in itertools.permutations(chrs,2):
 	temp = ''.join(i)
 	# if loop discards results that only contain numbers permutated onto other numbers
