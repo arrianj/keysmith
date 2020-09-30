@@ -15,6 +15,12 @@ if startup == 'yes':
 		birthday = str(pyip.inputDate(prompt='[*] Enter birthday [format: MM/DD/YYYY]: '))
 	else:
 		pass
+	skip_small = pyip.inputYesNo(prompt='[?] Skip generating results with low character counts? [Y/N]: ')
+	if skip_small == 'yes':
+		skip_length = (pyip.inputNum(prompt='[*] Minimum amount of characters in result?: '))
+	else:
+		pass
+	
 else:
 	sys.exit()
 
@@ -44,5 +50,8 @@ output = open(file_name, 'w')
 # fill text file with results, by iterating every representation through the rest of the list, once per input field, and saving
 for i in itertools.permutations(chrs,input_counter):
 	temp = ''.join(i)
-	output.write(temp + '\n')	
+	if len(temp) < skip_length:
+		pass
+	else:
+		output.write(temp + '\n')	
 output.close()
