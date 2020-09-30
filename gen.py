@@ -17,9 +17,9 @@ startup = pyip.inputYesNo(prompt=('[?] Begin new password gen? [Y/N]: '))
 if startup == 'yes':
 	first_name = pyip.inputCustom(text_alert, prompt='[*] First Name: ')
 	last_name = pyip.inputCustom(text_alert, prompt='[*] Last Name: ')
-	use_numbers = pyip.inputYesNo(prompt='[?] Should I include numbers? [Y/N]: ')
+	use_numbers = pyip.inputYesNo(prompt='[?] Include numbers? [Y/N]: ')
 	if use_numbers == 'yes':
-		digit_counter = pyip.inputNum(prompt='[?] Up to what number should I generate? [e.g. 100 would mean all numbers from 0-100]: ')
+		digit_counter = pyip.inputNum(prompt='[?] What is the highest number you want to use? [e.g. 100 would mean all numbers from 0-100]: ')
 	else:
 		pass
 	# birthday = pyip.inputDate(prompt='[*] Enter birthday [format: MM/DD/YYYY]: ')
@@ -33,12 +33,14 @@ chrs_l_name = possibles_l_name(last_name)
 # combine the storage variables into a single set
 chrs = list(chain(chrs_f_name,chrs_l_name))
 
+# set input counter to iterate once per field
 input_counter = 2
 
-# add numbers to permutations
+# use numbers in permutations
 if use_numbers == 'yes':
 	input_counter += 1
 	numbers = [str(i) for i in range(digit_counter+1)]
+
 # see what representations will be permutated
 print(chrs)
 
@@ -56,6 +58,7 @@ if use_numbers == 'no':
 			pass
 		else:
 			output.write(temp + '\n')
+			
 # error here is that i only want it to create a permutation that has a number
 elif use_numbers == 'yes':
 	for x in numbers:
