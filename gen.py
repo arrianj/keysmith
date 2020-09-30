@@ -19,7 +19,7 @@ if startup == 'yes':
 	if skip_small == 'yes':
 		skip_length = (pyip.inputNum(prompt='[*] Minimum amount of characters in result?: '))
 	else:
-		pass
+		skip_length = 0
 	
 else:
 	sys.exit()
