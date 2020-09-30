@@ -1,16 +1,9 @@
 import itertools
 import pyinputplus as pyip
 import sys
-import methods
+import functions
 from itertools import chain
-from methods import *
-
-# input validator function
-def text_alert(text):
-	if text.isalpha():
-		pass
-	else:
-		raise Exception('Input can only contain letters.')
+from functions import *
 
 # begin script
 startup = pyip.inputYesNo(prompt=('[?] Begin new password gen? [Y/N]: '))
