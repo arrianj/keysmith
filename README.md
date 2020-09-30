@@ -13,9 +13,7 @@ $ python gen.py
 
 ## Features
 
-* Permutes combinations of the data representations it generates from the user-provided inputs, and saves them to a .txt file that Keysmith creates and saves to the local directory. 
-
-* Keysmith takes three inputs, a first name, a last name, and optionally, a range of numbers. It will generate possible representations of the text values input for the first and last name, and purmute them with the optional addition of using the user-defined range of numbers as well.
+* Keysmith takes three inputs, a first name, a last name, and optionally, a birthday. It will generate possible representations of the text values input for the fields, and saves them to a .txt file that Keysmith creates and saves to the local directory
 
 ## License
 
