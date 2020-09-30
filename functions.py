@@ -1,6 +1,3 @@
-def has_num(s):
-    return any(i.isdigit() for i in s)
-
 def text_alert(text):
 	if text.isalpha():
 		pass
@@ -36,3 +33,17 @@ def possibles_l_name(lname):
     l_name_vals.append(lname.lower()[0])
     l_name_vals.append(lname.lower()[0]+'.')
     return l_name_vals
+
+def possibles_bday(bday):
+    # creates possible string represtations of values in submitted birth date, and accounts for birth dates and months starting with 0
+    bday_vals = []
+    bday_vals.append(bday[0:4])
+    bday_vals.append(bday[2:4])
+    bday_vals.append(bday[5:7])
+    bday_vals.append(bday[8:10])
+    if bday[5] == '0':
+        bday_vals.append(bday[6:7])
+    if bday[8] == '0':
+        bday_vals.append(bday[9:10])
+
+    return bday_vals
