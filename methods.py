@@ -1,3 +1,6 @@
+def has_num(s):
+    return any(i.isdigit() for i in s)
+
 def possibles_f_name(fname):
     # iterates first name input through a variety of possible representations, saves values to a set
     f_name_vals = []
