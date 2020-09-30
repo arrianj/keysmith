@@ -1,8 +1,9 @@
 import itertools
 import pyinputplus as pyip
 import sys
+import methods
 from itertools import chain
-from inputbreakdown import *
+from methods import *
 
 # input validator function
 def text_alert(text):
@@ -17,7 +18,10 @@ if startup == 'yes':
 	first_name = pyip.inputCustom(text_alert, prompt='[*] First Name: ')
 	last_name = pyip.inputCustom(text_alert, prompt='[*] Last Name: ')
 	use_numbers = pyip.inputYesNo(prompt='[?] Should I include numbers? [Y/N]: ')
-	# digit_counter = pyip.inputNum(max=3, prompt='[?] Up to how many digits should I generate? [4 => 0-9999]: ')
+	if use_numbers == 'yes':
+		digit_counter = pyip.inputNum(prompt='[?] Up to what number should I generate? [e.g. 100 would mean all numbers from 0-100]: ')
+	else:
+		pass
 	# birthday = pyip.inputDate(prompt='[*] Enter birthday [format: MM/DD/YYYY]: ')
 else:
 	sys.exit()
@@ -25,17 +29,16 @@ else:
 # generate possible representations of inputs and stores them in these variables
 chrs_f_name = possibles_f_name(first_name)
 chrs_l_name = possibles_l_name(last_name)
-numbers = ['1','2','3','4','5','6','7','8','9','0']
 
 # combine the storage variables into a single set
-chrs = set(chain(chrs_f_name,chrs_l_name))
+chrs = list(chain(chrs_f_name,chrs_l_name))
 
-# optional inputs
+input_counter = 2
+
+# add numbers to permutations
 if use_numbers == 'yes':
-	chrs = set(chain(chrs,numbers))
-else:
-	pass
-
+	input_counter += 1
+	numbers = [str(i) for i in range(digit_counter+1)]
 # see what representations will be permutated
 print(chrs)
 
@@ -43,12 +46,27 @@ print(chrs)
 file_name = input('Insert a name for your wordlist file: ')+'.txt'
 output = open(file_name, 'w')
 
-# fill text file with results, by iterating every representation through the rest of the list, once per representation, and saving   
-for i in itertools.permutations(chrs,2):
-	temp = ''.join(i)
-	# if loop discards results that only contain numbers permutated onto other numbers
-	if temp.isnumeric():
-		pass
-	else:
-		output.write(temp + '\n')
+# fill text file with results, by iterating every representation through the rest of the list, once per field of input, and saving   
+
+if use_numbers == 'no':
+	for i in itertools.permutations(chrs,input_counter):
+		temp = ''.join(i)
+		# discard results that only contain numbers
+		if temp.isnumeric():
+			pass
+		else:
+			output.write(temp + '\n')
+# error here is that i only want it to create a permutation that has a number
+elif use_numbers == 'yes':
+	for x in numbers:
+		chrs = set(chain(chrs,x))
+		for i in itertools.permutations(chrs,input_counter):
+			temp = ''.join(i)
+			# discard results that only contain numbers
+			if temp.isnumeric():
+				pass
+			elif has_num(temp) == False:
+				pass
+			else:
+				output.write(temp + '\n')
 output.close()
