@@ -15,7 +15,7 @@ $ python gen.py
 
 * Keysmith takes three inputs, a first name, a last name, and optionally, a birthday. It will generate possible representations of the text values input for the fields, and saves them to a .txt file that Keysmith creates and saves to the local directory
 
-* You can set a minimum character requirement for results, and Keysmith will only save results that meet or exceed that requirement. With multiple single character representations being generated, this is a helpful feature to get rid of some noise in the dictionaries.
+* A minimum character requirement can be set for the output, and Keysmith will only save results that meet or exceed that requirement. With multiple single character representations being generated, this is a helpful feature to get rid of some noise in the dictionaries.
 
 ## License
 
