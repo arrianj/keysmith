@@ -7,6 +7,8 @@ Keysmith makes no attempt to do anything with the values it generates. I do not 
 
 ## Installing
 
+$ git clone https://github.com/arrianj/keysmith.git
+
 $ pip install -r requirements.txt
 
 $ python gen.py
