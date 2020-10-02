@@ -42,8 +42,8 @@ def possibles_bday(bday):
     bday_vals.append(bday[5:7])
     bday_vals.append(bday[8:10])
     if bday[5] == '0':
-        bday_vals.append(bday[6:7])
+        bday_vals.append(bday[6])
     if bday[8] == '0':
-        bday_vals.append(bday[9:10])
+        bday_vals.append(bday[9])
 
     return bday_vals
