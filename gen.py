@@ -2,7 +2,6 @@ import itertools
 import pyinputplus as pyip
 import sys
 import functions
-from itertools import chain
 from functions import *
 
 # begin script
@@ -29,7 +28,7 @@ chrs_f_name = possibles_f_name(first_name)
 chrs_l_name = possibles_l_name(last_name)
 
 # combine the storage variables into a single set
-chrs = list(chain(chrs_f_name,chrs_l_name))
+chrs = list(itertools.chain(chrs_f_name,chrs_l_name))
 
 # set input counter to iterate once per field
 input_counter = 2
@@ -38,7 +37,7 @@ input_counter = 2
 if use_bday == 'yes':
 	chrs_bday = possibles_bday(birthday)
 	input_counter += 1
-	chrs = set(chain(chrs,chrs_bday))
+	chrs = set(itertools.chain(chrs,chrs_bday))
 
 # see what representations will be permutated
 print(chrs)
