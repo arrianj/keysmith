@@ -1,14 +1,13 @@
 import itertools
 import pyinputplus as pyip
 import sys
-import functions
-from functions import *
+import functions as func
 
 # begin script
 startup = pyip.inputYesNo(prompt=('[?] Begin new password gen? [Y/N]: '))
 if startup == 'yes':
-	first_name = pyip.inputCustom(text_alert, prompt='[*] First Name: ')
-	last_name = pyip.inputCustom(text_alert, prompt='[*] Last Name: ')
+	first_name = pyip.inputCustom(func.text_alert, prompt='[*] First Name: ')
+	last_name = pyip.inputCustom(func.text_alert, prompt='[*] Last Name: ')
 	use_bday = pyip.inputYesNo(prompt='[?] Include birthday? [Y/N]: ')
 	if use_bday == 'yes':
 		birthday = str(pyip.inputDate(prompt='[*] Enter birthday [format: MM/DD/YYYY]: '))
@@ -24,8 +23,8 @@ else:
 	sys.exit()
 
 # generate possible representations of inputs and stores them in these variables
-chrs_f_name = possibles_f_name(first_name)
-chrs_l_name = possibles_l_name(last_name)
+chrs_f_name = func.possibles_f_name(first_name)
+chrs_l_name = func.possibles_l_name(last_name)
 
 # combine the storage variables into a single set
 chrs = list(itertools.chain(chrs_f_name,chrs_l_name))
@@ -35,7 +34,7 @@ input_counter = 2
 
 # use birthday in permutations
 if use_bday == 'yes':
-	chrs_bday = possibles_bday(birthday)
+	chrs_bday = func.possibles_bday(birthday)
 	input_counter += 1
 	chrs = set(itertools.chain(chrs,chrs_bday))
 
